@@ -1,0 +1,39 @@
+----------------------------------------------------------------------------------------
+• Cuenta Corriente:
+[GET] localhost/cuentaCorriente/<id>
+Pedir saldo por id, funcionando.
+Create cuenta corriente: se inicializan en 0 al crear un user.
+¿Tendría sentido deshabilitar una cuenta corriente? Habíamos hablado que quizás cuando deshabilitamos al usuario ya es suficiente...
+----------------------------------------------------------------------------------------
+• Transacciones:
+
+[GET] localhost/transacciones
+Obtener todas las transacciones, funcionando.
+
+[POST] localhost/transacciones
+Dar de alta una transacción, funcionando: es necesario chequear el tipo de pago ingresado para ver si está dentro de los válidos?
+Se podría hacer así nomás sin llamar los ids de tipos de pago, hardcodeando la lógica por el momento.
+De igual manera, si se podrían cargar distintos tipos de pagos por parte del aeroclub no sé qué tanto sentido tendría.
+
+[DELETE] localhost/transacciones/<id>
+¡ELIMINAR transacción! Funcionando. *Creo que funcionaría en cascada.
+
+
+>POSTMAN
+[POST] localhost/transacciones
+Body de crear transacción:
+{
+    "monto": 15999,
+    "fecha": "2023-12-01",
+    "motivo": "Pago de servicios",
+    "tipo_pago_id": 2,
+    "cuenta_corriente_id": 1,
+    "id_transacciones": 50
+}
+
+---------------------------------------------------------------------------------------
+• Ya se le puede ver el saldo de la cuenta a los usuarios al llamarlos.
+[GET] localhost/usuarios ó localhost/usuarios/<id>
+----------------------------------------------------------------------------------------
+• En el Trello: "Métodos de la API para que los gestores registren los pagos que hacen los usuarios" vendría a ser dar de alta una transacción?
+
