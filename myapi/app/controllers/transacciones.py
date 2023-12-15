@@ -101,7 +101,9 @@ class TransaccionesController:
              transaccion_list.append(transaccion_data)
         return jsonify(transaccion_list)
     
-    def obtener_transaccion(self, cuenta_corriente_id):
+
+    # Obtener una sola transaccion de un usuario según su id
+    """def obtener_transaccion(self, cuenta_corriente_id):
         transaccion_uid = Transacciones.query.filter_by(cuenta_corriente_id=cuenta_corriente_id).first()
         if transaccion_uid:
             transaccion_data = {
@@ -113,4 +115,23 @@ class TransaccionesController:
                     'cuenta_corriente_id': transaccion_uid.cuenta_corriente_id,
                 }
             return transaccion_data 
-        return False
+        return False"""
+    
+
+    # Obtener todas las transacciones de un usuario según su id
+    def obtener_transaccion(self, cuenta_corriente_id):
+        transaccion_uid = Transacciones.query.filter_by(cuenta_corriente_id=cuenta_corriente_id)
+        transaccion_uid_list = []
+
+        for transaccion in transaccion_uid:   
+             transaccion_data = {
+                'id_transacciones': transaccion.id_transacciones,
+                'monto': transaccion.monto,
+                'fecha': transaccion.fecha,
+                'motivo': transaccion.motivo,
+                'tipo_pago_id': transaccion.tipo_pago_id,
+                'cuenta_corriente_id': transaccion.cuenta_corriente_id,
+            }
+             transaccion_uid_list.append(transaccion_data)
+        return transaccion_uid_list
+           
