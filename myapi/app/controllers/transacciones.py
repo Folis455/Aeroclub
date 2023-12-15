@@ -102,9 +102,9 @@ class TransaccionesController:
         return jsonify(transaccion_list)
     
 
-    # Obtener una sola transaccion de un usuario según su id
+    # Obtener una sola transaccion (la última) de un usuario según su id
     """def obtener_transaccion(self, cuenta_corriente_id):
-        transaccion_uid = Transacciones.query.filter_by(cuenta_corriente_id=cuenta_corriente_id).first()
+        transaccion_uid = Transacciones.query.filter_by(cuenta_corriente_id=cuenta_corriente_id).order_by(Transacciones.fecha.desc()).first()
         if transaccion_uid:
             transaccion_data = {
                     'id_transacciones': transaccion_uid.id_transacciones,
